@@ -1,0 +1,190 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #f6f7ff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #23255b;
+  --primary-foreground: #ffffff;
+  --secondary: #eef0ff;
+  --secondary-foreground: #23255b;
+  --muted: #f3f4ff;
+  --muted-foreground: #6b7280;
+  --accent: #635bff;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e6e9f7;
+  --input: #eef0ff;
+  --ring: #cfd6ff;
+  --chart-1: #23255b;
+  --chart-2: #635bff;
+  --chart-3: #9aa4ff;
+  --chart-4: #3f49d7;
+  --chart-5: #7c86ff;
+  --radius: 0.75rem;
+  --sidebar: #f6f7ff;
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: #23255b;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #635bff;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e6e9f7;
+  --sidebar-ring: #cfd6ff;
+}
+
+.dark {
+  --background: #0b1022;
+  --foreground: #e5e7eb;
+  --card: #0f172a;
+  --card-foreground: #e5e7eb;
+  --popover: #111b33;
+  --popover-foreground: #e5e7eb;
+  --primary: #e5e7eb;
+  --primary-foreground: #0b1022;
+  --secondary: #111b33;
+  --secondary-foreground: #e5e7eb;
+  --muted: #0b1022;
+  --muted-foreground: #94a3b8;
+  --accent: #7c86ff;
+  --accent-foreground: #0b1022;
+  --destructive: #f87171;
+  --destructive-foreground: #0b1022;
+  --border: #1b2444;
+  --input: #111b33;
+  --ring: #3a477a;
+  --chart-1: #e5e7eb;
+  --chart-2: #7c86ff;
+  --chart-3: #635bff;
+  --chart-4: #38bdf8;
+  --chart-5: #22c55e;
+  --sidebar: #0b1022;
+  --sidebar-foreground: #e5e7eb;
+  --sidebar-primary: #7c86ff;
+  --sidebar-primary-foreground: #0b1022;
+  --sidebar-accent: #38bdf8;
+  --sidebar-accent-foreground: #0b1022;
+  --sidebar-border: #1b2444;
+  --sidebar-ring: #3a477a;
+}
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback';
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    color-scheme: light;
+    transition: background-color 250ms, color 250ms, border-color 250ms;
+    scroll-behavior: smooth;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    background: radial-gradient(
+        900px 500px at 10% 15%,
+        rgba(99, 91, 255, 0.12),
+        rgba(99, 91, 255, 0) 60%
+      ),
+      radial-gradient(
+        700px 420px at 90% 20%,
+        rgba(124, 134, 255, 0.12),
+        rgba(124, 134, 255, 0) 55%
+      ),
+      linear-gradient(180deg, #f7f8ff 0%, #f0f2ff 55%, #ffffff 100%);
+    min-height: 100vh;
+    @apply bg-background text-foreground;
+    background-attachment: fixed;
+    transition: background-color 250ms, color 250ms;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full hover:bg-primary/50 transition-colors;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image: linear-gradient(color-mix(in oklch, var(--foreground) 10%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklch, var(--foreground) 10%, transparent) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: -1px -1px;
+  }
+}
